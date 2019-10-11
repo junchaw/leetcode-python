@@ -24,16 +24,27 @@ class Solution:
         raise RuntimeError
 
 
-def test(nums: List[int], target: int, expect: List[int]):
+class TestCase:
+    def __init__(self, nums: List[int], target: int, expect: List[int]):
+        self.nums = nums
+        self.target = target
+        self.expect = expect
+
+
+def test(c: TestCase):
     s = Solution()
-    result = s.twoSum(nums, target)
-    assert result == expect, "Expect {}, got {}".format(expect, result)
+    result = s.twoSum(c.nums, c.target)
+    assert result == c.expect, "Expect {}, got {}".format(c.expect, result)
     print("Passed, nums: {}, target: {}, expect: {}".format(
-        nums, target, expect))
+        c.nums, c.target, c.expect))
 
 
 if __name__ == '__main__':
-    test([2, 7, 11, 15], 9, [0, 1])
-    test([2, 7, 11, 15], 22, [1, 3])
-    test([0, 4, 3, 0], 0, [0, 3])
-    test([-1, -2, -3, -4, -5], -8, [2, 4])
+    testCases = [
+        TestCase([2, 7, 11, 15], 9, [0, 1]),
+        TestCase([2, 7, 11, 15], 22, [1, 3]),
+        TestCase([0, 4, 3, 0], 0, [0, 3]),
+        TestCase([-1, -2, -3, -4, -5], -8, [2, 4]),
+    ]
+    for testCase in testCases:
+        test(testCase)

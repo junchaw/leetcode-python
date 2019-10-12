@@ -8,15 +8,14 @@
 #
 # A linked list can be reversed either iteratively or recursively.
 # Could you implement both?
+from typing import List
+
 
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
         self.val = x
         self.next = None
-
-
-from typing import List
 
 
 class Solution:
@@ -56,9 +55,10 @@ def test(c: TestCase):
     s = Solution()
     result = s.reverseList(build_linked_list(c.nums))
     resultList = linked_list_to_list(result)
-    assert resultList == c.expect, "Expect {}, got {}".format(
-        c.expect, resultList)
-    print("Passed, nums: {},  expect: {}".format(c.nums, c.expect))
+    if resultList == c.expect:
+        print("Passed, nums: {},  expect: {}".format(c.nums, c.expect))
+    else:
+        print("Expect {}, got {}".format(c.expect, resultList))
 
 
 if __name__ == '__main__':

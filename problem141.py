@@ -51,13 +51,12 @@ class ListNode:
 
 class Solution:
     def hasCycle(self, head: ListNode) -> bool:
-        p = head
-        seen = []
-        while p is not None:
-            if p in seen:
+        seen = set()
+        while head is not None:
+            if head in seen:
                 return True
-            seen.append(p)
-            p = p.next
+            seen.add(head)
+            head = head.next
         return False
 
 

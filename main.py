@@ -4,6 +4,7 @@ import time
 import problem1
 import problem141
 import problem142
+import problem20
 import problem206
 import problem24
 import problem25
@@ -24,6 +25,7 @@ def main():
 
     problems = {
         1: problem1.solve,
+        20: problem20.solve,
         24: problem24.solve,
         25: problem25.solve,
         141: problem141.solve,

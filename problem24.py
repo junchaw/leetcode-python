@@ -17,7 +17,7 @@
 
 from typing import List
 
-from linked_list import ListNode, build_linked_list
+from linked_list import ListNode, build_linked_list, linked_list_to_list
 
 
 class Solution:
@@ -28,15 +28,6 @@ class Solution:
             a, b = p.next, p.next.next
             p.next, a.next, b.next, p = b, b.next, a, a
         return new_head.next
-
-
-def linked_list_to_list(head: ListNode) -> List[int]:
-    p = head
-    l = []
-    while p is not None:
-        l.append(p.val)
-        p = p.next
-    return l
 
 
 class TestCase:

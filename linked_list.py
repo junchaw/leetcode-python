@@ -30,3 +30,16 @@ def build_linked_list(nums: List, loop_at: int = -1) -> ListNode:
             p.next = loop_record
 
     return hook.next
+
+
+def linked_list_to_list(head: ListNode) -> List:
+    l = []
+    seen = set()
+    while head is not None:
+        if head in seen:
+            l.append("Cycled, tail connects to <{}>".format(head.val))
+            return l
+        seen.add(head)
+        l.append(head.val)
+        head = head.next
+    return l

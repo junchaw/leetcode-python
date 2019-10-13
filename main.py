@@ -1,4 +1,5 @@
 import argparse
+import time
 
 import problem1
 import problem141
@@ -29,7 +30,9 @@ def main():
     }
 
     if problem in problems:
+        start_time = time.time()
         problems[problem]()
+        print("--- {} seconds used ---".format(time.time() - start_time))
     else:
         print("Problem {} not exist.".format(problem))
 

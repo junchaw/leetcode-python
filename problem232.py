@@ -93,6 +93,6 @@ def solve():
     assert not obj.empty()
 
     assert obj.pop() == 1  # not 2
-    assert obj.pop() == 2  # not 2
+    assert obj.pop() == 2
 
     assert obj.empty()

@@ -6,6 +6,7 @@ import problem141
 import problem142
 import problem20
 import problem206
+import problem232
 import problem24
 import problem25
 
@@ -31,6 +32,7 @@ def main():
         141: problem141.solve,
         142: problem142.solve,
         206: problem206.solve,
+        232: problem232.solve,
     }
 
     if problem in problems:

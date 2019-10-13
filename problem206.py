@@ -61,7 +61,7 @@ def test(c: TestCase):
         print("Expect {}, got {}".format(c.expect, resultList))
 
 
-if __name__ == '__main__':
+def solve():
     testCases = [
         TestCase([1], [1]),
         TestCase([1, 2], [2, 1]),

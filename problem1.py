@@ -39,7 +39,7 @@ def test(c: TestCase):
         c.nums, c.target, c.expect))
 
 
-if __name__ == '__main__':
+def solve():
     testCases = [
         TestCase([2, 7, 11, 15], 9, [0, 1]),
         TestCase([2, 7, 11, 15], 22, [1, 3]),

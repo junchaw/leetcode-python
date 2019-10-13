@@ -92,7 +92,7 @@ def test(c: TestCase):
             c.nums, c.loop_at, c.expect, result))
 
 
-if __name__ == '__main__':
+def solve():
     testCases = [
         TestCase([], -1, False),
         TestCase([1], -1, False),

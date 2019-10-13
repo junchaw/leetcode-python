@@ -8,14 +8,16 @@
 # Example:
 #
 # Given 1->2->3->4, you should return the list as 2->1->4->3.
-from typing import List
-
 
 # Definition for singly-linked list.
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+from typing import List
+
+from linked_list import ListNode, build_linked_list
 
 
 class Solution:
@@ -26,16 +28,6 @@ class Solution:
             a, b = p.next, p.next.next
             p.next, a.next, b.next, p = b, b.next, a, a
         return new_head.next
-
-
-def build_linked_list(nums: List[int]) -> ListNode:
-    p = ListNode(0)
-    hook = p
-    for n in nums:
-        node = ListNode(n)
-        p.next = node
-        p = node
-    return hook.next
 
 
 def linked_list_to_list(head: ListNode) -> List[int]:

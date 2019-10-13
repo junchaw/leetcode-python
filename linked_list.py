@@ -7,7 +7,7 @@ class ListNode:
         self.next = None
 
 
-def build_from_list(nums: List, loop_at: int = -1) -> ListNode:
+def build_linked_list(nums: List, loop_at: int = -1) -> ListNode:
     hook = p = ListNode(0)
 
     if len(nums) < 1:

@@ -50,7 +50,7 @@
 
 from typing import List
 
-from linked_list import ListNode, build_from_list
+from linked_list import ListNode, build_linked_list
 
 
 class Solution:
@@ -72,7 +72,7 @@ class TestCase:
 
 def test(c: TestCase):
     s = Solution()
-    result = s.detectCycle(build_from_list(c.nums, c.loop_at))
+    result = s.detectCycle(build_linked_list(c.nums, c.loop_at))
     if result:
         resultVal = result.val
     else:

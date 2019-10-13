@@ -7,11 +7,26 @@ class ListNode:
         self.next = None
 
 
-def build_linked_list(nums: List[int]) -> ListNode:
-    p = ListNode(0)
-    hook = p
-    for n in nums:
-        node = ListNode(n)
-        p.next = node
-        p = node
+def build_from_list(nums: List, loop_at: int = -1) -> ListNode:
+    hook = p = ListNode(0)
+
+    if len(nums) < 1:
+        return hook.next  # None
+
+    if loop_at == -1:  # no loop
+        for n in nums:
+            node = ListNode(n)
+            p.next = node
+            p = node
+    else:
+        loop_record = None
+        for i, n in enumerate(nums):
+            node = ListNode(n)
+            if i == loop_at:
+                loop_record = node
+            p.next = node
+            p = node
+        if loop_record:
+            p.next = loop_record
+
     return hook.next

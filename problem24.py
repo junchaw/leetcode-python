@@ -17,7 +17,7 @@
 
 from typing import List
 
-from linked_list import ListNode, build_linked_list
+from linked_list import ListNode, build_from_list
 
 
 class Solution:
@@ -47,7 +47,7 @@ class TestCase:
 
 def test(c: TestCase):
     s = Solution()
-    result = s.swapPairs(build_linked_list(c.nums))
+    result = s.swapPairs(build_from_list(c.nums))
     resultList = linked_list_to_list(result)
     if resultList == c.expect:
         print("Nums: {}, expect: {}, passed".format(c.nums, c.expect))

@@ -48,7 +48,7 @@
 
 from typing import List
 
-from linked_list import ListNode
+from linked_list import ListNode, build_from_list
 
 
 class Solution:
@@ -62,20 +62,6 @@ class Solution:
         return False
 
 
-def build_cycled_linked_list(nums: List[int], loop_at: int) -> ListNode:
-    hook = p = ListNode(0)
-    record, node = None, None
-    for i, n in enumerate(nums):
-        node = ListNode(n)
-        if i == loop_at:
-            record = node
-        p.next = node
-        p = node
-    if record and node:
-        node.next = record
-    return hook.next
-
-
 class TestCase:
     def __init__(self, nums: List[int], loop_at: int, expect: bool):
         self.nums = nums
@@ -85,7 +71,7 @@ class TestCase:
 
 def test(c: TestCase):
     s = Solution()
-    result = s.hasCycle(build_cycled_linked_list(c.nums, c.loop_at))
+    result = s.hasCycle(build_from_list(c.nums, c.loop_at))
     if result == c.expect:
         print("Nums: {}, loop at: {}, expect: {}, passed".format(
             c.nums, c.loop_at, c.expect))

@@ -32,7 +32,7 @@ class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
         result = []
         window = []
-        for i,n in enumerate(nums):
+        for i, n in enumerate(nums):
             if window and window[0] <= i - k:
                 window.pop(0)
             while window and nums[window[-1]] < n:

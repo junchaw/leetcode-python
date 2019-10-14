@@ -75,25 +75,18 @@ def build_tree(nums: List[int]):
 
 
 class Solution:
-    def in_order(self, root: TreeNode) -> List[int]:
-        if not root:
-            return []
-
-        if root.left:
-            if root.right:
-                return self.in_order(root.left) + [root.val] + \
-                       self.in_order(root.right)
-            else:
-                return self.in_order(root.left) + [root.val]
-        else:
-            if root.right:
-                return [root.val] + self.in_order(root.right)
-            else:
-                return [root.val]
-
     def isValidBST(self, root: TreeNode) -> bool:
-        i = self.in_order(root)
-        return i == sorted(set(i))
+        stack, prev = [], None
+        while stack or root:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            if prev is not None and root.val <= prev:
+                return False
+            prev = root.val
+            root = root.right
+        return True
 
 
 def test(c):

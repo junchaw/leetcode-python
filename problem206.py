@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/reverse-linked-list/
+#
 # Reverse a singly linked list.
 #
 # Example:
@@ -8,14 +10,10 @@
 #
 # A linked list can be reversed either iteratively or recursively.
 # Could you implement both?
+
 from typing import List
 
-
-# Definition for singly-linked list.
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
+from linked_list import ListNode, build_linked_list, linked_list_to_list
 
 
 class Solution:
@@ -24,25 +22,6 @@ class Solution:
         while curr is not None:
             curr.next, prev, curr = prev, curr, curr.next
         return prev
-
-
-def build_linked_list(nums: List[int]) -> ListNode:
-    p = ListNode(0)
-    hook = p
-    for n in nums:
-        node = ListNode(n)
-        p.next = node
-        p = node
-    return hook.next
-
-
-def linked_list_to_list(head: ListNode) -> List[int]:
-    p = head
-    l = []
-    while p is not None:
-        l.append(p.val)
-        p = p.next
-    return l
 
 
 class TestCase:

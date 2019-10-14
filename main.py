@@ -13,6 +13,7 @@ import problem24
 import problem242
 import problem25
 import problem703
+import problem98
 
 
 def main():
@@ -33,6 +34,7 @@ def main():
         20: problem20.solve,
         24: problem24.solve,
         25: problem25.solve,
+        98: problem98.solve,
         141: problem141.solve,
         142: problem142.solve,
         206: problem206.solve,

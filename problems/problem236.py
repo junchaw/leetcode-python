@@ -36,7 +36,7 @@
 #         self.left = None
 #         self.right = None
 
-from problems.tree import TreeNode, build_tree, pre_order
+from problems.tree import TreeNode, build_tree, in_order
 
 
 class Solution:
@@ -59,7 +59,7 @@ class Solution:
 
 def test(c):
     root = build_tree(c['nodes'])
-    nodes = pre_order(root)
+    nodes = in_order(root)
     p, q = None, None
     for node in nodes:
         if node.val == c['p']:

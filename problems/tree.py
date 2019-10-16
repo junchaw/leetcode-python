@@ -35,9 +35,9 @@ def build_tree(nums: List[int]):
     return root
 
 
-# pre_order returns list of tree nodes
-def pre_order(root: TreeNode) -> List[TreeNode]:
+# in_order returns list of tree nodes
+def in_order(root: TreeNode) -> List[TreeNode]:
     if not root:
         return []
 
-    return pre_order(root.left) + [root] + pre_order(root.right)
+    return in_order(root.left) + [root] + in_order(root.right)

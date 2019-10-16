@@ -9,6 +9,7 @@ import problem206
 import problem225
 import problem232
 import problem235
+import problem236
 import problem239
 import problem24
 import problem242
@@ -42,6 +43,7 @@ def main():
         225: problem225.solve,
         232: problem232.solve,
         235: problem235.solve,
+        236: problem236.solve,
         239: problem239.solve,
         242: problem242.solve,
         703: problem703.solve,

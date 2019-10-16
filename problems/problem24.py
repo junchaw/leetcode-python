@@ -19,7 +19,7 @@
 
 from typing import List
 
-from linked_list import ListNode, build_linked_list, linked_list_to_list
+from problems.linked_list import ListNode, build_linked_list, linked_list_to_list
 
 
 class Solution:

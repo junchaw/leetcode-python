@@ -1,34 +1,35 @@
-# https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
+# https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
 #
-# Given a binary tree, find the lowest common ancestor (LCA) of two given
-# nodes in the tree.
+# Given a binary search tree (BST), find the lowest common ancestor (LCA) of
+# two given nodes in the BST.
 #
 # According to the definition of LCA on Wikipedia: “The lowest common ancestor
-# is defined between two nodes p and q as the lowest node in T that has both p
-# and q as descendants (where we allow a node to be a descendant of itself).”
+# is defined between two nodes p and q as the lowest node in T that has both
+# p and q as descendants (where we allow a node to be a descendant of itself).”
 #
-# Given the following binary tree:  root = [3,5,1,6,2,0,8,null,null,7,4]
+# Given binary search tree:  root = [6,2,8,0,4,7,9,null,null,3,5]
 #
 #
 #
 #
 # Example 1:
 #
-# Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1
-# Output: 3
-# Explanation: The LCA of nodes 5 and 1 is 3.
+# Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8
+# Output: 6
+# Explanation: The LCA of nodes 2 and 8 is 6.
 # Example 2:
 #
-# Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4
-# Output: 5
-# Explanation: The LCA of nodes 5 and 4 is 5, since a node can be a descendant
+# Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4
+# Output: 2
+# Explanation: The LCA of nodes 2 and 4 is 2, since a node can be a descendant
 # of itself according to the LCA definition.
 #
 #
 # Note:
 #
 # All of the nodes' values will be unique.
-# p and q are different and both values will exist in the binary tree.
+# p and q are different and both values will exist in the BST.
+# Definition for a binary tree node.
 
 # class TreeNode:
 #     def __init__(self, x):
@@ -36,25 +37,33 @@
 #         self.left = None
 #         self.right = None
 
-from tree import TreeNode, build_tree, pre_order
+from problems.tree import TreeNode, build_tree, pre_order
 
 
 class Solution:
+    def lowestCommonAncestor1(self, root: 'TreeNode', p: 'TreeNode',
+                              q: 'TreeNode') -> 'TreeNode':
+        if root.val > p.val:
+            if root.val <= q.val:
+                return root
+            else:
+                return self.lowestCommonAncestor(root.left, p, q)
+        elif root.val < p.val:
+            if root.val >= q.val:
+                return root
+            else:
+                return self.lowestCommonAncestor(root.right, p, q)
+        return root
+
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode',
                              q: 'TreeNode') -> 'TreeNode':
-        if not root or root == p or root == q:
-            return root
-        left = self.lowestCommonAncestor(root.left,p,q)
-        right = self.lowestCommonAncestor(root.right,p,q)
-        if left:
-            if right:
+        while root:
+            if root.val > p.val and root.val > q.val:
+                root = root.left
+            elif root.val < p.val and root.val < q.val:
+                root = root.right
+            else:
                 return root
-            return left
-        return right
-
-
-
-
 
 
 def test(c):
@@ -96,15 +105,15 @@ def solve():
             'expect': 2,
         },
         {
-            'nodes': [2, 3, 1],
+            'nodes': [2, 1, 3],
             'p': 1,
             'q': 3,
             'expect': 2,
         },
         {
-            'nodes': [5, 7, 3, 6, 4, 8, 2],
+            'nodes': [5, 3, 7, 2, 4, 6, 8],
             'p': 6,
-            'q': 4,
+            'q': 8,
             'expect': 7,
         },
         {
@@ -115,9 +124,9 @@ def solve():
         },
         {
             'nodes': [5, 3, 7, 2, 4, 6, 8],
-            'p': 6,
+            'p': 4,
             'q': 8,
-            'expect': 7,
+            'expect': 5,
         },
     ]
     for test_case in test_cases:

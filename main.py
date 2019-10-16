@@ -1,21 +1,9 @@
 import argparse
 import time
 
-import problem1
-import problem141
-import problem142
-import problem20
-import problem206
-import problem225
-import problem232
-import problem235
-import problem236
-import problem239
-import problem24
-import problem242
-import problem25
-import problem703
-import problem98
+from problems import problem232, problem236, problem141, problem24, problem142, \
+    problem235, problem1, problem20, problem242, problem225, problem239, \
+    problem206, problem25, problem98, problem703
 
 
 def main():

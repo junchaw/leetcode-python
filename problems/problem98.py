@@ -37,7 +37,7 @@
 #         self.val = x
 #         self.left = None
 #         self.right = None
-from tree import TreeNode, build_tree
+from problems.tree import TreeNode, build_tree
 
 
 class Solution:

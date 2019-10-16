@@ -50,7 +50,7 @@
 
 from typing import List
 
-from linked_list import ListNode, build_linked_list
+from problems.linked_list import ListNode, build_linked_list
 
 
 class Solution:

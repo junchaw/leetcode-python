@@ -22,7 +22,7 @@
 
 
 class Solution:
-    def myPow(self, x: float, n: int) -> float:
+    def myPow1(self, x: float, n: int) -> float:
         if n < 0:
             return 1 / self.myPow(x, -n)
         elif n == 0:
@@ -32,6 +32,18 @@ class Solution:
         if n & 1:
             return x * self.myPow(x * x, n >> 1)
         return self.myPow(x * x, n >> 1)
+
+    def myPow(self, x: float, n: int) -> float:
+        if n < 0:
+            x = 1 / x
+            n = -n
+        pow = 1
+        while n:
+            if n & 1:
+                pow *= x
+            x *= x
+            n >>= 1
+        return pow
 
 
 def test(x, n, expect):

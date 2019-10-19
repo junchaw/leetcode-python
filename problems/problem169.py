@@ -17,7 +17,7 @@ from typing import List
 
 
 class Solution:
-    def majorityElement(self, nums: List[int]) -> int:
+    def majorityElement1(self, nums: List[int]) -> int:
         m = {}
         maj = 0
         counter = 0
@@ -30,6 +30,18 @@ class Solution:
                 maj = n
                 counter = m[n]
         return maj
+
+    def majorityElement(self, nums):
+        count = 0
+        candidate = None
+        for n in nums:
+            if count == 0:
+                candidate = n
+            if n == candidate:
+                count += 1
+            else:
+                count -= 1
+        return candidate
 
 
 def test(nums: List[int], expect: int):
